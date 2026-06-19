@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cognis-atslens"
+version = "0.1.0"
+description = "ATS field-schema mapper & exporter for candidate-data portability."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Cognis Digital" }]
+maintainers = [{ name = "Cognis Digital" }]
+keywords = ["ats", "recruiting", "schema", "mapping", "data-portability", "csv", "json"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Operating System :: OS Independent",
+    "Topic :: Office/Business",
+    "Topic :: Utilities",
+]
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=7.0"]
+
+[project.scripts]
+atslens = "atslens.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+atslens = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

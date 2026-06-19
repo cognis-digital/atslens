@@ -1,0 +1,17 @@
+{
+  "name": "vendorC",
+  "description": "Example custom profile (legacy spreadsheet export layout).",
+  "fields": {
+    "candidate_id": "ID",
+    "first_name": "First",
+    "last_name": "Last",
+    "email": "Email",
+    "phone": "Phone",
+    "applied_date": "AppliedOn",
+    "job_title": "Role",
+    "location": "Location",
+    "years_experience": "Experience",
+    "source": "Source",
+    "status": "Stage"
+  }
+}

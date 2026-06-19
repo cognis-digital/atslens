@@ -1,0 +1,41 @@
+[
+  {
+    "candidate_id": "C-1001",
+    "first_name": "ada",
+    "last_name": "lovelace",
+    "email": "Ada.Lovelace@Example.com",
+    "phone": "+1 (415) 555-0147",
+    "applied_date": "2026-03-14",
+    "job_title": "Backend Engineer",
+    "location": "San Francisco",
+    "years_experience": 7,
+    "source": "referral",
+    "status": "screen"
+  },
+  {
+    "candidate_id": "C-1002",
+    "first_name": "grace",
+    "last_name": "hopper",
+    "email": "grace.hopper@example.com",
+    "phone": "415-555-0182",
+    "applied_date": "2026-03-22",
+    "job_title": "Platform Engineer",
+    "location": "Remote",
+    "years_experience": 12,
+    "source": "careers-site",
+    "status": "onsite"
+  },
+  {
+    "candidate_id": "C-1003",
+    "first_name": "  alan  turing ",
+    "last_name": "TURING",
+    "email": "alan.turing@example.com",
+    "phone": "+44 20 7946 0958",
+    "applied_date": "2026-03-05",
+    "job_title": "Research Engineer",
+    "location": "London",
+    "years_experience": 9,
+    "source": "inbound",
+    "status": "applied"
+  }
+]
