@@ -9,6 +9,9 @@ import pytest
 
 from atslens import (
     BUILTIN_LAYOUTS,
+    compute_diff,
+    diff_is_clean,
+    diff_record,
     list_layouts,
     load_layout,
     load_profile,
@@ -203,6 +206,54 @@ def test_write_export_file(tmp_path, records):
     assert "candidate_id" in out.read_text(encoding="utf-8")
 
 
+# --- diff --------------------------------------------------------------------
+
+def test_diff_identical_is_clean(records):
+    report = compute_diff(records, records)
+    assert diff_is_clean(report)
+    assert report["summary"]["changed"] == 0
+    assert report["summary"]["unchanged"] == len(records)
+
+
+def test_diff_detects_added_and_removed():
+    before = [{"candidate_id": "1", "email": "a@b.com"}]
+    after = [{"candidate_id": "2", "email": "c@d.com"}]
+    report = compute_diff(before, after)
+    assert report["added"] == ["2"]
+    assert report["removed"] == ["1"]
+    assert not diff_is_clean(report)
+
+
+def test_diff_detects_field_change_and_removal():
+    before = [{"candidate_id": "1", "status": "screen", "phone": "+15550001"}]
+    after = [{"candidate_id": "1", "status": "onsite"}]
+    report = compute_diff(before, after)
+    changed = report["changed"]["1"]
+    assert changed["status"] == {"before": "screen", "after": "onsite"}
+    assert changed["phone"] == {"before": "+15550001", "after": None}
+
+
+def test_diff_record_added_field():
+    changes = diff_record({"a": 1}, {"a": 1, "b": 2})
+    assert changes == {"b": {"before": None, "after": 2}}
+
+
+def test_diff_custom_key():
+    before = [{"ref": "X", "v": 1}]
+    after = [{"ref": "X", "v": 2}]
+    report = compute_diff(before, after, key="ref")
+    assert report["key"] == "ref"
+    assert report["changed"]["X"]["v"] == {"before": 1, "after": 2}
+
+
+def test_diff_unkeyed_records_surface():
+    before = [{"candidate_id": "", "email": "a@b.com"}]
+    after = []
+    report = compute_diff(before, after)
+    # an unkeyed 'before' record still shows up as removed
+    assert report["summary"]["removed"] == 1
+
+
 # --- CLI --------------------------------------------------------------------
 
 def test_cli_validate_pass(capsys):
@@ -235,3 +286,38 @@ def test_cli_layouts(capsys):
     rc = main(["layouts"])
     assert rc == 0
     assert "vendorA" in capsys.readouterr().out
+
+
+def test_cli_diff_clean(tmp_path, records, capsys):
+    p = tmp_path / "recs.json"
+    p.write_text(json.dumps(records), encoding="utf-8")
+    rc = main(["diff", str(p), str(p)])
+    assert rc == 0
+    assert "CLEAN" in capsys.readouterr().out
+
+
+def test_cli_diff_differences(tmp_path, records, capsys):
+    before = tmp_path / "before.json"
+    after = tmp_path / "after.json"
+    before.write_text(json.dumps(records), encoding="utf-8")
+    changed = json.loads(json.dumps(records))
+    changed[0]["status"] = "hired"
+    after.write_text(json.dumps(changed), encoding="utf-8")
+    rc = main(["diff", str(before), str(after), "--json"])
+    assert rc == 1
+    report = json.loads(capsys.readouterr().out)
+    assert report["summary"]["changed"] == 1
+
+
+def test_cli_diff_with_from_after_layout(tmp_path, records, capsys):
+    """A vendorB export diffs clean against a canonical baseline when
+    translated back through --from-after."""
+    before = tmp_path / "before.json"
+    after = tmp_path / "after.json"
+    before.write_text(json.dumps(records), encoding="utf-8")
+    vendor_b = map_records(records, load_layout("canonical"),
+                           load_layout("vendorB"))
+    after.write_text(json.dumps(vendor_b), encoding="utf-8")
+    rc = main(["diff", str(before), str(after), "--from-after", "vendorB"])
+    assert rc == 0
+    assert "CLEAN" in capsys.readouterr().out

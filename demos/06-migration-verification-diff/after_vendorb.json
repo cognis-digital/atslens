@@ -1,0 +1,53 @@
+[
+  {
+    "cand_ref": "M-9001",
+    "fname": "Ravi",
+    "lname": "Kapoor",
+    "email_addr": "ravi.kapoor@example.com",
+    "contact_phone": "+1 (408) 555-0151",
+    "date_applied": "2026-03-18",
+    "req_title": "Staff Engineer",
+    "geo": "San Jose",
+    "experience_years": 13,
+    "channel": "referral",
+    "stage": "onsite"
+  },
+  {
+    "cand_ref": "M-9002",
+    "fname": "Ingrid",
+    "lname": "Larsen",
+    "email_addr": "ingrid.larsen@example.com",
+    "contact_phone": "+45 32 55 01 27",
+    "date_applied": "2026-03-20",
+    "req_title": "Data Scientist",
+    "geo": "Copenhagen",
+    "experience_years": 7,
+    "channel": "careers-site",
+    "stage": "onsite"
+  },
+  {
+    "cand_ref": "M-9003",
+    "fname": "Carlos",
+    "lname": "Mendes",
+    "email_addr": "carlos.mendes@example.com",
+    "date_applied": "2026-03-25",
+    "req_title": "Frontend Engineer",
+    "geo": "Sao Paulo",
+    "experience_years": 4,
+    "channel": "linkedin",
+    "stage": "applied"
+  },
+  {
+    "cand_ref": "M-9004",
+    "fname": "Yuki",
+    "lname": "Tanaka",
+    "email_addr": "yuki.tanaka@example.com",
+    "contact_phone": "+81 6 5550 0112",
+    "date_applied": "2026-03-28",
+    "req_title": "Backend Engineer",
+    "geo": "Osaka",
+    "experience_years": 6,
+    "channel": "referral",
+    "stage": "screen"
+  }
+]

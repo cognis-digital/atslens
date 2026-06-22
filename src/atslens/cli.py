@@ -4,6 +4,7 @@ Subcommands:
     map       remap records between field layouts
     validate  check records against a schema
     export    write records to CSV or JSON
+    diff      compare two record sets to verify a migration
     layouts   list known field layouts
 """
 
@@ -16,9 +17,10 @@ from pathlib import Path
 from typing import Any
 
 from . import __version__
+from .diff import compute_diff, diff_is_clean
 from .exporter import to_csv, to_json, write_export
 from .layouts import list_layouts, resolve_layout
-from .mapper import map_records
+from .mapper import map_records, _to_canonical
 from .normalize import normalize_records
 from .schema import CANONICAL_SCHEMA, validate_records
 
@@ -89,6 +91,43 @@ def cmd_export(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_diff(args: argparse.Namespace) -> int:
+    before = _load_records(args.before)
+    after = _load_records(args.after)
+    # Optionally translate each side from a vendor layout into canonical names
+    # so fields line up before comparing.
+    if args.from_before:
+        layout = resolve_layout(args.from_before)
+        before = [_to_canonical(r, layout) for r in before]
+    if args.from_after:
+        layout = resolve_layout(args.from_after)
+        after = [_to_canonical(r, layout) for r in after]
+    if args.normalize:
+        before = normalize_records(before)
+        after = normalize_records(after)
+    report = compute_diff(before, after, key=args.key)
+    clean = diff_is_clean(report)
+    if args.json:
+        print(json.dumps(report, indent=2, ensure_ascii=False))
+    else:
+        s = report["summary"]
+        verdict = "CLEAN" if clean else "DIFFERENCES"
+        print(
+            f"{verdict}: {s['total_before']} -> {s['total_after']} record(s) "
+            f"(added {s['added']}, removed {s['removed']}, "
+            f"changed {s['changed']}, unchanged {s['unchanged']})"
+        )
+        for k in report["added"]:
+            print(f"  + {k}  (only in after)")
+        for k in report["removed"]:
+            print(f"  - {k}  (only in before)")
+        for k, fields in report["changed"].items():
+            print(f"  ~ {k}")
+            for field, ba in fields.items():
+                print(f"      {field}: {ba['before']!r} -> {ba['after']!r}")
+    return 0 if clean else 1
+
+
 def cmd_layouts(args: argparse.Namespace) -> int:
     layouts = list_layouts()
     if args.json:
@@ -156,6 +195,25 @@ def build_parser() -> argparse.ArgumentParser:
     p_exp.add_argument("-o", "--output", default=None,
                        help="write to file instead of stdout")
     p_exp.set_defaults(func=cmd_export)
+
+    # diff
+    p_diff = sub.add_parser(
+        "diff",
+        help="diff two record sets to verify a migration round-tripped",
+    )
+    p_diff.add_argument("before", help="path to baseline records JSON")
+    p_diff.add_argument("after", help="path to records JSON to compare")
+    p_diff.add_argument("--key", default="candidate_id",
+                        help="record key field (default: candidate_id)")
+    p_diff.add_argument("--from-before", dest="from_before", default=None,
+                        help="layout/profile to translate 'before' from")
+    p_diff.add_argument("--from-after", dest="from_after", default=None,
+                        help="layout/profile to translate 'after' from")
+    p_diff.add_argument("--normalize", action="store_true",
+                        help="normalize both sides before comparing")
+    p_diff.add_argument("--json", action="store_true",
+                        help="emit JSON diff report")
+    p_diff.set_defaults(func=cmd_diff)
 
     # layouts
     p_lay = sub.add_parser("layouts", help="list known field layouts")

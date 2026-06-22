@@ -22,6 +22,7 @@ from .layouts import (
 from .mapper import map_records
 from .normalize import normalize_record, normalize_records
 from .exporter import to_csv, to_json
+from .diff import compute_diff, diff_record, diff_is_clean
 
 __all__ = [
     "__version__",
@@ -38,4 +39,7 @@ __all__ = [
     "normalize_records",
     "to_csv",
     "to_json",
+    "compute_diff",
+    "diff_record",
+    "diff_is_clean",
 ]

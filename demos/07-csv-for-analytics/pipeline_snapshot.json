@@ -1,0 +1,50 @@
+[
+  {
+    "candidate_id": "P-401",
+    "first_name": "Noah",
+    "last_name": "Williams",
+    "email": "noah.williams@example.com",
+    "applied_date": "2026-04-01",
+    "job_title": "Backend Engineer",
+    "location": "Austin",
+    "years_experience": 5,
+    "source": "referral",
+    "status": "onsite"
+  },
+  {
+    "candidate_id": "P-402",
+    "first_name": "Aisha",
+    "last_name": "Rahman",
+    "email": "aisha.rahman@example.com",
+    "applied_date": "2026-04-02",
+    "job_title": "Backend Engineer",
+    "location": "Austin",
+    "years_experience": 8,
+    "source": "careers-site",
+    "status": "offer"
+  },
+  {
+    "candidate_id": "P-403",
+    "first_name": "Liam",
+    "last_name": "O'Brien",
+    "email": "liam.obrien@example.com",
+    "applied_date": "2026-04-03",
+    "job_title": "Data Scientist",
+    "location": "Remote",
+    "years_experience": 3,
+    "source": "linkedin",
+    "status": "screen"
+  },
+  {
+    "candidate_id": "P-404",
+    "first_name": "Mia",
+    "last_name": "Chen",
+    "email": "mia.chen@example.com",
+    "applied_date": "2026-04-04",
+    "job_title": "Data Scientist",
+    "location": "Remote",
+    "years_experience": 6,
+    "source": "referral",
+    "status": "applied"
+  }
+]

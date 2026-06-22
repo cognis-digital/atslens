@@ -1,0 +1,42 @@
+[
+  {
+    "candidate_id": "C-2001",
+    "first_name": "Jordan",
+    "last_name": "Mbeki",
+    "email": "jordan.mbeki@example.com",
+    "phone": "+1 (305) 555-0119",
+    "applied_date": "2026-05-01",
+    "job_title": "Product Designer",
+    "years_experience": 6,
+    "status": "screen"
+  },
+  {
+    "candidate_id": "C-2002",
+    "first_name": "Lena",
+    "last_name": "Fischer",
+    "email": "lena.fischer(at)example.com",
+    "applied_date": "2026-05-03",
+    "job_title": "Frontend Engineer",
+    "years_experience": 4,
+    "status": "applied"
+  },
+  {
+    "candidate_id": "C-2003",
+    "first_name": "Omar",
+    "last_name": "Haddad",
+    "email": "omar.haddad@example.com",
+    "applied_date": "2026-13-09",
+    "job_title": "Data Analyst",
+    "years_experience": "five",
+    "status": "applied"
+  },
+  {
+    "first_name": "Wei",
+    "last_name": "Zhang",
+    "email": "wei.zhang@example.com",
+    "applied_date": "2026-05-08",
+    "job_title": "Backend Engineer",
+    "years_experience": 9,
+    "status": "screen"
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "candidate_id": "M-9001",
+    "first_name": "Ravi",
+    "last_name": "Kapoor",
+    "email": "ravi.kapoor@example.com",
+    "phone": "+1 (408) 555-0151",
+    "applied_date": "2026-03-18",
+    "job_title": "Staff Engineer",
+    "location": "San Jose",
+    "years_experience": 13,
+    "source": "referral",
+    "status": "onsite"
+  },
+  {
+    "candidate_id": "M-9002",
+    "first_name": "Ingrid",
+    "last_name": "Larsen",
+    "email": "ingrid.larsen@example.com",
+    "phone": "+45 32 55 01 27",
+    "applied_date": "2026-03-20",
+    "job_title": "Data Scientist",
+    "location": "Copenhagen",
+    "years_experience": 7,
+    "source": "careers-site",
+    "status": "screen"
+  },
+  {
+    "candidate_id": "M-9003",
+    "first_name": "Carlos",
+    "last_name": "Mendes",
+    "email": "carlos.mendes@example.com",
+    "phone": "+55 11 5550 0199",
+    "applied_date": "2026-03-25",
+    "job_title": "Frontend Engineer",
+    "location": "Sao Paulo",
+    "years_experience": 4,
+    "source": "linkedin",
+    "status": "applied"
+  }
+]

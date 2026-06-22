@@ -1,0 +1,41 @@
+[
+  {
+    "candidate_id": "EU-1201",
+    "first_name": "Anneke",
+    "last_name": "de Vries",
+    "email": "anneke.devries@example.nl",
+    "phone": "+31 20 555 0164",
+    "applied_date": "12-03-2026",
+    "job_title": "Platform Engineer",
+    "location": "Amsterdam",
+    "years_experience": 9,
+    "source": "careers-site",
+    "status": "screen"
+  },
+  {
+    "candidate_id": "EU-1202",
+    "first_name": "Marek",
+    "last_name": "Nowak",
+    "email": "marek.nowak@example.pl",
+    "phone": "+48 22 555 0148",
+    "applied_date": "15-03-2026",
+    "job_title": "Backend Engineer",
+    "location": "Warsaw",
+    "years_experience": 6,
+    "source": "referral",
+    "status": "applied"
+  },
+  {
+    "candidate_id": "EU-1203",
+    "first_name": "Sofía",
+    "last_name": "García",
+    "email": "sofia.garcia@example.es",
+    "phone": "+34 91 555 0172",
+    "applied_date": "18-03-2026",
+    "job_title": "Data Engineer",
+    "location": "Madrid",
+    "years_experience": 4,
+    "source": "linkedin",
+    "status": "screen"
+  }
+]

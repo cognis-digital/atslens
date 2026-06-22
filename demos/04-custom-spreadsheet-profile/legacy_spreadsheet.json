@@ -1,0 +1,28 @@
+[
+  {
+    "ID": "L-301",
+    "First": "Hana",
+    "Last": "Suzuki",
+    "Email": "hana.suzuki@example.com",
+    "Phone": "+81 3 5550 0166",
+    "AppliedOn": "2026-01-09",
+    "Role": "QA Engineer",
+    "Location": "Tokyo",
+    "Experience": 10,
+    "Source": "agency",
+    "Stage": "screen"
+  },
+  {
+    "ID": "L-302",
+    "First": "Mateo",
+    "Last": "Gomez",
+    "Email": "mateo.gomez@example.com",
+    "Phone": "+52 55 5550 0121",
+    "AppliedOn": "2026-01-12",
+    "Role": "Mobile Engineer",
+    "Location": "Mexico City",
+    "Experience": 5,
+    "Source": "referral",
+    "Stage": "applied"
+  }
+]

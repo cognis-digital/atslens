@@ -1,0 +1,28 @@
+[
+  {
+    "applicantId": "A-5501",
+    "givenName": "Sofia",
+    "familyName": "Marchetti",
+    "emailAddress": "sofia.marchetti@example.com",
+    "phoneNumber": "+39 06 5550 0188",
+    "applicationDate": "2026-02-11",
+    "positionTitle": "Engineering Manager",
+    "city": "Rome",
+    "yearsExp": 11,
+    "leadSource": "referral",
+    "pipelineStage": "offer"
+  },
+  {
+    "applicantId": "A-5502",
+    "givenName": "Daniel",
+    "familyName": "Owusu",
+    "emailAddress": "daniel.owusu@example.com",
+    "phoneNumber": "+233 30 255 0140",
+    "applicationDate": "2026-02-14",
+    "positionTitle": "DevOps Engineer",
+    "city": "Accra",
+    "yearsExp": 7,
+    "leadSource": "careers-site",
+    "pipelineStage": "onsite"
+  }
+]
