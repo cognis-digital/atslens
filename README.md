@@ -17,6 +17,60 @@ License: **COCL 1.0**
 
 ---
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ atslens --version
+atslens 0.1.0
+```
+
+```console
+$ atslens --help
+usage: atslens [-h] [--version] {map,validate,export,diff,layouts} ...
+
+ATS field-schema mapper & exporter for candidate-data portability.
+
+positional arguments:
+  {map,validate,export,diff,layouts}
+    map                 remap records between field layouts
+    validate            validate records against a schema
+    export              export records to CSV or JSON
+    diff                diff two record sets to verify a migration round-
+                        tripped
+    layouts             list known field layouts
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+```
+
+> Blocks above are real `atslens` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"candidate_data": [
+    {
+        "id": "1234567890",
+        "name": "John Doe",
+        "email": "johndoe@example.com"
+    },
+    {
+        "id": "2345678901",
+        "name": "Jane Smith",
+        "email": "janesmith@example.com"
+    }
+]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Install
 
 Requires Python 3.10+.

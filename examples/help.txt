@@ -1,0 +1,18 @@
+$ atslens --help
+
+usage: atslens [-h] [--version] {map,validate,export,diff,layouts} ...
+
+ATS field-schema mapper & exporter for candidate-data portability.
+
+positional arguments:
+  {map,validate,export,diff,layouts}
+    map                 remap records between field layouts
+    validate            validate records against a schema
+    export              export records to CSV or JSON
+    diff                diff two record sets to verify a migration round-
+                        tripped
+    layouts             list known field layouts
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit

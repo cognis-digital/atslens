@@ -1,0 +1,3 @@
+$ atslens --version
+
+atslens 0.1.0
